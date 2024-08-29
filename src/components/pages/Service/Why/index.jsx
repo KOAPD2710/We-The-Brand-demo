@@ -101,7 +101,6 @@ const ServiceWhy = ({ SerWhyImg, WhyData, WhyThumb, ...props }) => {
         if (window.innerWidth > 991) {
             moveThumbFunc()
         }
-        console.log(WhyData);
         return () => {
             cancelAnimationFrame(raf)
         }

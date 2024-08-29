@@ -1,8 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import ServiceHero from ".";
-import Video from '@assets/Ser-hero.mp4'
+// import Video from '@assets/Ser-hero.mp4'
+import Bg from '@assets/Ser-hero.jpg'
 ---
 
 
-<ServiceHero video={Video} client:visible={{rootMargin: "100% 100%"}}/>
+<ServiceHero client:visible={{rootMargin: "100% 100%"}}>
+    <Image src={Bg} alt="" class="img img-fill" slot="Background"/>
+</ServiceHero>
 

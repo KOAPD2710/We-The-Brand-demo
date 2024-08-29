@@ -8,7 +8,7 @@ import { useGSAP } from '@gsap/react';
 import Video from '@/components/common/VideoFormat';
 
 
-const ServiceHero = ({ ...props }) => {
+const ServiceHero = ({ Background, ...props }) => {
     const ref = useRef()
     const $isHeaderLight = useStore(isHeaderLight);
 
@@ -51,6 +51,7 @@ const ServiceHero = ({ ...props }) => {
     // }, [])
 
     useEffect(() => {
+        console.log(Background);
         let timeout;
         inView(ref.current, () => {
             timeout = setTimeout(() => {
@@ -99,7 +100,8 @@ const ServiceHero = ({ ...props }) => {
                     <div className="txt h0 txt-up">ideas</div>
                 </div>
                 <div className="service-hero-bg">
-                    <Video src={props.video} className='img img-fill'></Video>
+                    {Background}
+                    {/* <Video src={props.video} className='img img-fill'></Video> */}
                     <div className="service-hero-bg-filter"></div>
                 </div>
             </div>

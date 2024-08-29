@@ -11,7 +11,7 @@
     padding-block: 4rem;
 
     mix-blend-mode: difference;
-    filter: invert(1);
+    // filter: invert(1);
     // filter: contrast(0);
 
     transition: color .3s ease-in-out, transform .4s ease-in-out;
@@ -22,8 +22,8 @@
     }
 
     &.on-light {
-        color: $cl-bg;
-        filter: invert(0);
+        // color: $cl-bg;
+        // filter: invert(0);
         mix-blend-mode: unset;
     }
 
@@ -32,7 +32,7 @@
     }
 
     &.active {
-        color: $cl-bg;
+        // color: $cl-bg;
         filter: invert(0);
         mix-blend-mode: unset;
     }
