@@ -1,0 +1,190 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+
+.service {
+    &-hero {
+        position: relative;
+        height: 100svh;
+        padding-bottom: 2rem;
+        contain: paint;
+
+        color: $cl-bg;
+
+        .container {
+            position: relative;
+            height: 100%;
+            z-index: 2;
+            grid-template-rows: 1fr auto;
+            row-gap: .8rem;
+
+            @include md {
+                row-gap: .4rem;
+            }
+
+            @include sm {
+                row-gap: .2rem;
+            }
+        }
+
+
+        &-line {
+            align-self: end;
+
+            &.line {
+                &-1 {
+                    grid-row: 2/3;
+
+                    &.slot-1 {
+                        grid-column: 1/2;
+
+                        @include md {
+                            grid-row: 4/5;
+                            grid-column: 1/3;
+                            margin-bottom: .4rem;
+                            margin-top: 16.4rem;
+                        }
+
+                        @include sm {
+                            grid-row: 3/4;
+                            margin-top: unset;
+                        }
+                    }
+                    &.slot-2 {
+                        align-self: start;
+                        grid-column: 9/11;
+
+                        @include md {
+                            grid-row: 2/3;
+                            grid-column: 1/3;
+
+                            margin-bottom: 4rem;
+                        }
+                    }
+                    &.slot-3 {
+                        grid-column: 11/13;
+
+                        @include md {
+                            grid-row: 3/4;
+                            grid-column: 1/4;
+                        }
+
+                        @include sm {
+                            grid-row: 2/3;
+                            grid-column: 3/-1;
+                            margin-bottom: 50%;
+                        }
+                    }
+                }
+                &-2 {
+                    grid-row: 3/4;
+
+                    &.slot-1 {
+                        grid-column: 1/5;
+                        color: $cl-txt;
+                        mix-blend-mode: plus-lighter;
+
+                        @include md {
+                            grid-row: 5/6;
+                            grid-column: 1/5;
+                        }
+
+                        @include sm {
+                            grid-row: 4/5;
+                        }
+                    }
+                    &.slot-2 {
+                        grid-column: 5/9;
+                        margin-bottom: 1rem;
+
+                        @include md {
+                            grid-row: 3/4;
+                            grid-column: 6/11;
+                            margin-bottom: unset;
+                        }
+
+                        @include sm {
+                            display: none;
+                        }
+                    }
+                    &.slot-3 {
+                        grid-column: 9/-1;
+                        white-space: nowrap;
+                        margin-left: -.5rem;
+                        color: $cl-txt;
+                        mix-blend-mode: plus-lighter;
+
+                        @include md {
+                            grid-row: 6/7;
+                            grid-column: 3/-1;
+                        }
+
+                        @include sm {
+                            grid-row: 5/6;
+                            grid-column: 1/-1;
+                            margin-left: .8rem;
+                        }
+                    }
+                }
+                &-3 {
+                    grid-row: 4/5;
+                    grid-column: 5/12;
+                    margin-left: -1.7rem;
+                    color: $cl-txt;
+                    mix-blend-mode: plus-lighter;
+
+                    @include md {
+                        grid-row: 7/8;
+                        grid-column: 1/-1;
+                        text-align: right;
+                        margin-left: unset;
+                        margin-right: -1rem;
+                    }
+
+                    @include sm {
+                        grid-row: 6/7;
+                        margin-right: unset;
+                    }
+                }
+            }
+        }
+
+        &-skill {
+            display: flex;
+            flex-direction: column;
+            row-gap: .8rem;
+        }
+        &-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            user-select: none;
+            pointer-events: none;
+            @include size(100vw, 100svh);
+
+            video.img {
+                position: relative;
+                z-index: 1;
+                filter: contrast(1.5) saturate(1.6) brightness(.95);
+            }
+
+            @keyframes test {
+                0% {
+
+                }
+            }
+
+            &-filter {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                @include size(100%, 48.8%);
+
+                background: linear-gradient(0deg, $cl-bg, transparent);
+
+                z-index: 2;
+            }
+        }
+    }
+}

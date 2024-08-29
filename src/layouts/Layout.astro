@@ -1,0 +1,51 @@
+---
+import "@styles/global.scss";
+import { ViewTransitions } from 'astro:transitions';
+import  SpeedInsights  from "@vercel/speed-insights/astro"
+
+import BaseHead from "@/globals/BaseHead.astro";
+import Cursor from "@/globals/Cursor/Cursor.astro";
+import Header from "@/globals/Header/Header.astro";
+import Footer from "@/globals/Footer/Footer.astro";
+import NoisePattern from "@/globals/NoisePattern/NoisePattern.astro";
+import FluidDistortion from "@/globals/FluidDistortion/FluidDistortion.astro";
+
+import MainScript from "@/js/main";
+import TestForm from "@/globals/TestForm/TestForm.astro";
+const { title, data_page, isNeedFooter, isNeedInfiniteScroll } = Astro.props;
+---
+
+<!DOCTYPE html>
+
+<html>
+	<!-- <ViewTransitions/> -->
+	<BaseHead title={title} />
+	<main class="main on-load">
+		<!-- <FluidDistortion /> -->
+		<Header />
+		<NoisePattern />
+		<Cursor />
+		<slot />
+		{isNeedFooter && <Footer />}
+		<!-- <TestForm /> -->
+	</main>
+	<script>
+		import gsap from "gsap";
+		import ScrollTrigger from "gsap/ScrollTrigger";
+
+		window.gsap = gsap;
+		window.ScrollTrigger = ScrollTrigger;
+
+		gsap.registerPlugin(ScrollTrigger);
+		gsap.defaults({
+			ease: "none",
+			duration: 1,
+		});
+		ScrollTrigger.getAll().forEach(triggers => {
+            triggers.update()
+            triggers.refresh()
+        })
+	</script>
+	<MainScript isInfiniteScroll={isNeedInfiniteScroll} client:load />
+	<SpeedInsights/>
+</html>

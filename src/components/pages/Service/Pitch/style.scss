@@ -1,0 +1,85 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.service {
+    &-pitch {
+        padding-block: 22.5rem;
+
+        &-content {
+            grid-column: 6/12;
+            grid-row: 1/2;
+            text-align: center;
+            z-index: 2;
+
+            @include md {
+                grid-column: 3/11;
+            }
+
+            @include sm {
+                grid-column: 1/-1;
+            }
+        }
+
+        &-label {
+            margin-bottom: 6rem;
+
+            @include md {
+                margin-bottom: 4.8rem;
+            }
+        }
+        &-title {
+            .txt-gradient {
+                background-image: linear-gradient(90deg, #287B95, #DBD7C2);
+            }
+        }
+        &-thumb {
+            position: relative;
+            grid-column: 1/-1;
+            grid-row: 1/2;
+            @include size(100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+
+            @include md {
+                display: none;
+            }
+
+            &-img {
+                contain: paint;
+
+                &-wrapper {
+                    position: absolute;
+                    perspective: 1500px;
+
+                    &:nth-child(1) {
+                        top: -2.2rem;
+                        left: 10.2rem;
+
+                        .service-pitch-thumb-img, img {
+                            @include size(24rem, 30rem);
+                        }
+                    }
+                    &:nth-child(2) {
+                        top: 21.8rem;
+                        right: 14.7rem;
+                        
+                        .service-pitch-thumb-img, img {
+                            @include size(24rem, 30rem);
+                        }
+                    }
+                    &:nth-child(3) {
+                        top: 56rem;
+                        left: 30.5rem;
+
+                        .service-pitch-thumb-img, img {
+                            @include size(18.4rem, 23rem);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

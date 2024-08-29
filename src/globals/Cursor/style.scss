@@ -1,0 +1,216 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    user-select: none;
+    pointer-events: none;
+    contain: paint;
+    z-index: 100000;
+
+    @include size(100vw, 100vh);
+
+
+    --animation: .3s ease-out;
+
+
+    @include md {
+        display: none;
+    }
+
+    &-coor {
+        position: absolute;
+        @include size(0px);
+        mix-blend-mode: difference;
+
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        will-change: opacity;
+
+
+        &.on-load {
+            opacity: 0;
+        }
+
+        &.on-show {
+            opacity: 1;
+        }
+
+        .cursor-line {
+            position: absolute;
+            background-color: $cl-txt;
+            background-color: $cl-cyan;
+            opacity: .5;
+
+
+            &.line {
+                &-hor {
+                    @include size(100vw, 1px);
+                    transform: translateY(-50%);
+                }
+
+                &-ver {
+                    @include size(1px, 100vh);
+                    transform: translateX(-50%);
+                }
+                &-left {
+                    right: 0;
+                    transition: right var(--animation);
+                    will-change: right;
+                }
+                &-right {
+                    left: 0;
+                    transition: left var(--animation);
+                    will-change: left;
+                }
+                &-top {
+                    bottom: 0;
+                    transition: bottom var(--animation);
+                    will-change: bottom;
+                }
+                &-bot {
+                    top: 0;
+                    transition: top var(--animation);
+                    will-change: top;
+                }
+            }
+        }
+    }
+
+    &-inner {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include size(0px);
+        opacity: 1;
+        transition: opacity .3s ease-in-out;
+        will-change: transform, opacity;
+
+        &.on-load {
+            opacity: 0;
+        }
+
+        &-circle {
+            position: absolute;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 100vmax;
+            border: 1px solid $cl-txt;
+            background-color: rgba($color: $cl-bg, $alpha: 0.1);
+            backdrop-filter: blur(.18rem);
+
+            opacity: 0;
+            @include size(8rem);
+            transform: scale(0);
+            contain: paint;
+
+            transition: transform var(--animation), opacity var(--animation);
+            will-change: width, height, opacity;
+        }
+
+        &-main {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // opacity: .4;
+
+            &-dot {
+                position: absolute;
+                z-index: 2;
+                background-color: $cl-cyan;
+                border-radius: 100vmax;
+                @include size(1.2rem);
+            }
+
+            &-outer {
+                position: absolute;
+                z-index: 1;
+                @include size(4rem);
+                opacity: .6;
+
+                animation: mainCursorOuter 4s linear infinite;
+
+                &-dot {
+                    position: absolute;
+                    @include size(.8rem);
+                    background-color: $cl-cyan;
+                    border-radius: 100vmax;
+
+                    &:nth-child(1) {
+                        top: 0;
+                        left: 0;
+                        transform: translate(-50%, -50%);
+                    }
+                    &:nth-child(2) {
+                        top: 0;
+                        right: 0;
+                        transform: translate(50%, -50%);
+                    }
+                    &:nth-child(3) {
+                        bottom: 0;
+                        right: 0;
+                        transform: translate(50%, 50%);
+                    }
+                    &:nth-child(4) {
+                        bottom: 0;
+                        left: 0;
+                        transform: translate(-50%, 50%);
+                    }
+                }
+
+                @keyframes mainCursorOuter {
+                    0% {
+                        transform: rotate(0deg) scale(1);
+                    }
+                    50% {
+                        transform: rotate(180deg) scale(.7);
+                        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+                    }
+                    100% {
+                        transform: rotate(360deg) scale(1);
+                    }
+                }
+            }
+        }
+    }
+    &-plus {
+        position: absolute;
+        @include size(2.8rem);
+    }
+
+    &-inner, &-coor {
+        &.on-expand {
+            .line {
+                &-top {
+                    bottom: 4rem;
+                }
+                &-bot {
+                    top: 4rem;
+                }
+                &-left {
+                    right: 4rem;
+                }
+                &-right {
+                    left: 4rem;
+                }
+            }
+
+            .cursor-inner-circle {
+                // @include size(8rem);
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    }
+
+}
+

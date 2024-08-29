@@ -1,0 +1,52 @@
+---
+import WorkProject from ".";
+import Klab from '@assets/Work-2.jpg';
+import Flyer from '@assets/Work-3.jpg';
+import Relie from '@assets/Work-4.jpg';
+import Coca from '@assets/Work-1.jpg';
+
+import Element from '@assets/Proj-1.mp4';
+import Console from '@assets/Proj-5.mp4';
+
+
+
+const Project = [
+    {
+        name: 'KLab',
+        thumb: Klab,
+        thumbType: 'image'
+    },
+    {
+        name: 'Flyer',
+        thumb: Flyer,
+        thumbType: 'image'
+    },
+    {
+        name: 'Console',
+        thumb: Console,
+        thumbType: 'video'
+    },
+    {
+        name: 'Relie',
+        thumb: Relie,
+        thumbType: 'image'
+    },
+    {
+        name: 'Coca',
+        thumb: Coca,
+        thumbType: 'image'
+    },
+    {
+        name: 'Element',
+        thumb: Element,
+        thumbType: 'video'
+    },
+]
+---
+
+
+
+<WorkProject allProject={Project} client:load/>
+
+
+

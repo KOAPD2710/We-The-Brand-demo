@@ -1,0 +1,174 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+
+.service {
+    &-client {
+        padding-block: 13rem 32rem;
+
+        contain: paint;
+
+        @include md {
+            padding-block: 14rem 20rem;
+        }
+
+        @include sm {
+            padding-block: 10rem 18rem;
+        }
+
+        &-head {
+            grid-column: 5/13;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 8rem;
+
+            @include md {
+                grid-column: 1/-1;
+                margin-bottom: 6rem;
+            }
+
+            &-wrapper {
+                width: fit-content;
+            }
+        }
+
+        &-title {
+            position: relative;
+
+            &.label-wrapper {
+                @include sm {
+                    display: flex;
+                    flex-direction: column;
+
+                    .txt-title {
+                        order: 2;
+                    }
+                }
+            }
+        }
+        &-label {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            text-transform: none;
+
+            @include sm {
+                position: unset;
+                margin-bottom: 4rem;
+            }
+        }
+
+        &-cta {
+            grid-column: 1/-1;
+            display: grid;
+            grid-template-columns: repeat(var(--grid-column), 1fr);
+            column-gap: var(--grid-gap);
+            align-items: center;
+            
+            margin-bottom: 8rem;
+
+            @include md {
+                margin-bottom: 6rem;
+            }
+
+            @include sm {
+                display: flex;
+                column-gap: unset;
+                flex-direction: column;
+            }
+        }
+        &-date{
+            @include md {
+                grid-column: 1/3
+            }
+
+            @include sm {
+                order: 2;
+            }
+        }
+
+        &-img {
+            @include size(13rem, 16rem);
+
+            @include md {
+                @include size(auto);
+            }
+
+            @include sm {
+                @include size(11.2rem, 13.7rem);
+            }
+
+            &-wrapper {
+                grid-column: 8/10;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @include md {
+                    grid-column: 6/8;
+                }
+
+                @include sm {
+                    grid-column: unset;
+                    margin-bottom: .8rem;
+                }
+            }
+        }
+        &-link {
+            
+            &-wrapper {
+                grid-column: 15/-1;
+                display: flex;
+                justify-content: end;
+
+                @include md {
+                    grid-column: 10/-1;
+                }
+
+                @include sm {
+                    display: none;
+                }
+            }
+
+            &-sm {
+                &-wrapper {
+                    display: none;
+
+                    @include sm {
+                        display: block;
+                        grid-column: 1/-1;
+                        text-align: center;
+                        margin-top: 2.8rem;
+                    }
+                }
+            }
+        }
+
+        &-list {
+            grid-column: 1/-1;
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.6rem;
+
+            @include md {
+                row-gap: .8rem;
+            }
+            @include sm {
+                row-gap: .4rem;
+            }
+        }
+        &-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            .slash {
+                opacity: .6;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+---
+import Footer from ".";
+
+const FooterLink = [
+    {
+        name: 'Social Media',
+        list: [
+            {
+                name: 'Facebook',
+                link: './'
+            },
+            {
+                name: 'Instagram',
+                link: './'
+            },
+            {
+                name: 'LinkedIn',
+                link: 'https://www.linkedin.com/company/wethebrand-asia/'
+            }
+        ]
+    },
+    {
+        name: 'Navigation',
+        list: [
+            {
+                name: 'Home',
+                link: '/'
+            },
+            {
+                name: 'Works',
+                link: '/works'
+            },
+            {
+                name: 'Services',
+                link: '/services'
+            },
+            {
+                name: 'About',
+                link: '#'
+            }
+        ]
+    },
+    {
+        name: 'Contact',
+        list: [
+            {
+                name: '+ 00 123 456 789',
+                link: '+ 00 123 456 789'
+            },
+            {
+                name: 'wethebrand@studio.com',
+                link: 'wethebrand@studio.com'
+            }
+        ]
+    }
+]
+---
+
+<Footer FooterData={FooterLink} client:visible={{rootMargin: '100% 100%'}}/>
